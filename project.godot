@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="mindgame"
+config/name="mindsushi"
 run/main_scene="uid://bl0l32vwma1rv"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
