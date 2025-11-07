@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxou3xhfwpto4"]
+
+[ext_resource type="Script" uid="uid://glq2o71s1exn" path="res://src/cook.gd" id="1_1q6tk"]
+[ext_resource type="Texture2D" uid="uid://b3xnj01jhd42u" path="res://assets/TX Tileset Grass.png" id="1_h0uxg"]
+[ext_resource type="Texture2D" uid="uid://bujsyksklihf7" path="res://icon.svg" id="3_dxoc3"]
+
+[node name="Cook" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1q6tk")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 647.0
+texture = ExtResource("1_h0uxg")
+
+[node name="RiceButton" type="TouchScreenButton" parent="."]
+position = Vector2(22, 473)
+texture_normal = ExtResource("3_dxoc3")
+
+[node name="Timer" type="Timer" parent="RiceButton"]
+
+[connection signal="pressed" from="RiceButton" to="." method="_on_rice_button_pressed"]
+[connection signal="released" from="RiceButton" to="." method="_on_rice_button_released"]
+[connection signal="timeout" from="RiceButton/Timer" to="." method="_on_timer_timeout"]

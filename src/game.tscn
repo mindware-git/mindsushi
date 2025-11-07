@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cptd0fn0dngjt"]
+[gd_scene load_steps=4 format=3 uid="uid://cptd0fn0dngjt"]
 
 [ext_resource type="Script" uid="uid://cjahnc52sc5hg" path="res://src/game.gd" id="1_7uq6d"]
-[ext_resource type="Texture2D" uid="uid://bujsyksklihf7" path="res://icon.svg" id="2_3msxb"]
-[ext_resource type="Script" uid="uid://lndj4uiay8s7" path="res://src/restaurant_node.gd" id="2_kc8ui"]
-[ext_resource type="Script" uid="uid://dpegujtyrm56d" path="res://src/chef_node.gd" id="2_xq6wo"]
+[ext_resource type="PackedScene" uid="uid://pppeoc0tv07w" path="res://src/restaurant.tscn" id="3_kc8ui"]
+[ext_resource type="PackedScene" uid="uid://cxou3xhfwpto4" path="res://src/cook.tscn" id="3_xq6wo"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7uq6d")
@@ -14,11 +13,8 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 6.0
+offset_bottom = 23.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -45,34 +41,16 @@ offset_right = 171.0
 offset_bottom = 583.0
 text = "Go to restaurant"
 
-[node name="RestaurantNode" type="Node2D" parent="."]
-script = ExtResource("2_kc8ui")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="RestaurantNode"]
-
-[node name="ChefNode" type="Node2D" parent="."]
+[node name="Cook" parent="." instance=ExtResource("3_xq6wo")]
 visible = false
-script = ExtResource("2_xq6wo")
 
-[node name="RiceButton" type="TouchScreenButton" parent="ChefNode"]
-texture_normal = ExtResource("2_3msxb")
+[node name="Restaurant" parent="." instance=ExtResource("3_kc8ui")]
 
-[node name="Timer" type="Timer" parent="ChefNode/RiceButton"]
+[node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 10.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="ChefNode"]
-visible = false
-
-[node name="TextureRect" type="TextureRect" parent="ChefNode/CanvasLayer"]
-offset_left = 698.0
-offset_top = 214.0
-offset_right = 826.0
-offset_bottom = 342.0
-texture = ExtResource("2_3msxb")
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/ChefButton" to="." method="_on_chef_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestaurantButton" to="." method="_on_restaurant_button_pressed"]
-[connection signal="pressed" from="ChefNode/RiceButton" to="ChefNode" method="_on_rice_button_pressed"]
-[connection signal="released" from="ChefNode/RiceButton" to="ChefNode" method="_on_rice_button_released"]
-[connection signal="timeout" from="ChefNode/RiceButton/Timer" to="ChefNode" method="_on_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

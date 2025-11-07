@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3uwsgg7kri2v"]
+[gd_scene load_steps=8 format=3 uid="uid://d3uwsgg7kri2v"]
 
 [ext_resource type="Script" uid="uid://budqd786u8v8s" path="res://src/customer.gd" id="1_ac51m"]
+[ext_resource type="Texture2D" uid="uid://dxjkn4tgyuule" path="res://assets/TX Player.png" id="2_ae2sf"]
+[ext_resource type="Script" uid="uid://cavemb1fkmy8t" path="res://src/take.gd" id="3_8rmds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rmds"]
+atlas = ExtResource("2_ae2sf")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gjhe"]
+atlas = ExtResource("2_ae2sf")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nov2"]
+atlas = ExtResource("2_ae2sf")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1um5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rmds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gjhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nov2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Customer" type="Node2D"]
 script = ExtResource("1_ac51m")
@@ -10,6 +41,7 @@ script = ExtResource("1_ac51m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_x1um5")
 
 [node name="Order" type="Control" parent="."]
 layout_mode = 3
@@ -22,3 +54,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_8rmds")
+
+[node name="Path2D" type="Path2D" parent="."]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+loop = false
+
+[node name="WaitTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

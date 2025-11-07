@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var rice_timer = $RiceButton/Timer
 
@@ -25,7 +25,7 @@ func _on_rice_button_released() -> void:
 	# 스시 씬 생성
 	var sushi_instance = load("res://src/sushi.tscn").instantiate()
 	sushi_instance.rice_amount = pressed_time # pressed_time 변수 전달
-	get_parent().get_node("CanvasLayer").add_child(sushi_instance) # CanvasLayer에 추가
+	add_child(sushi_instance) # CanvasLayer에 추가
 	sushi_instance.position = Vector2(100, 200) # ChefNode 기준 적절한 위치
 
 

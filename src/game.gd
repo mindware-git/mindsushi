@@ -2,9 +2,8 @@ extends Node2D
 
 @onready var time_label = $CanvasLayer/VBoxContainer/HBoxContainer/TimeLabel
 @onready var money_label = $CanvasLayer/VBoxContainer/HBoxContainer/MoneyLabel
-@onready var restaurant_node = $RestaurantNode
-@onready var chef_node = $ChefNode
-@onready var chef_canvas = $ChefNode/CanvasLayer
+@onready var restaurant = $Restaurant
+@onready var cook = $Cook
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,11 +22,15 @@ func _on_timer_timeout() -> void:
 	time_label.text = "Time: " + str(SaveManager.game_data.running_time)
 
 func _on_restaurant_button_pressed() -> void:
-	restaurant_node.show()
-	chef_node.hide()
-	chef_canvas.hide()
+	restaurant.show()
+	cook.hide()
 
 func _on_chef_button_pressed() -> void:
-	restaurant_node.hide()
-	chef_node.show()
-	chef_canvas.show()
+	restaurant.hide()
+	cook.show()
+
+
+func _on_spawn_timer_timeout() -> void:
+	var customer = load("res://src/customer.tscn").instantiate()
+	customer.position = Vector2(200, 300)
+	restaurant.add_child(customer)
