@@ -6,3 +6,5 @@ const LATEST_FORMAT_VERSION = 1
 @export var owned_entities: Array[BaseEntity] = []
 @export var running_time: int = 0
 @export var money: int = 0
+@export var num_plate: int = 0
+@export var ready_food: Array[Array] = []

@@ -34,4 +34,6 @@ func _on_timer_timeout() -> void:
 
 
 func _on_serving_button_pressed() -> void:
-	pass # Replace with function body.
+	var rice: Ingredient = load("res://src/entity/rice.tres")
+	SaveManager.game_data.ready_food.append([rice])
+	print("Ready food: ", SaveManager.game_data.ready_food)
