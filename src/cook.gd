@@ -31,3 +31,7 @@ func _on_rice_button_released() -> void:
 
 func _on_timer_timeout() -> void:
 	print("Too long hold rice")
+
+
+func _on_serving_button_pressed() -> void:
+	pass # Replace with function body.
