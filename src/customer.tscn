@@ -43,13 +43,13 @@ script = ExtResource("1_ac51m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_x1um5")
 
-[node name="Order" type="Control" parent="."]
+[node name="Order" type="Control" parent="CharacterBody2D"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Take" type="Control" parent="."]
+[node name="Take" type="Control" parent="CharacterBody2D"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

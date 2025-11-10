@@ -24,10 +24,15 @@ func _on_timer_timeout() -> void:
 func _on_restaurant_button_pressed() -> void:
 	restaurant.show()
 	cook.hide()
+	$CanvasLayer/RestaurantButton.hide()
+	$CanvasLayer/ChefButton.show()
+	restaurant.update_plate()
 
 func _on_chef_button_pressed() -> void:
 	restaurant.hide()
 	cook.show()
+	$CanvasLayer/RestaurantButton.show()
+	$CanvasLayer/ChefButton.hide()
 
 
 func _on_spawn_timer_timeout() -> void:

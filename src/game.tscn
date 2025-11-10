@@ -35,6 +35,7 @@ offset_bottom = 587.0
 text = "Go to Chef"
 
 [node name="RestaurantButton" type="Button" parent="CanvasLayer"]
+visible = false
 offset_left = 34.0
 offset_top = 552.0
 offset_right = 171.0

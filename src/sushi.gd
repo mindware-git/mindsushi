@@ -21,7 +21,6 @@ func _ready() -> void:
 		sprite.texture = entity.texture
 		
 		# 스프라이트를 Control 노드 중앙에 위치시키기
-		var texture_size = entity.texture.get_size()
 		sprite.position = size / 2 # Control 크기의 절반으로 중앙 정렬
 		
 		add_child(sprite)

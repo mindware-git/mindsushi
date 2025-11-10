@@ -22,6 +22,7 @@ texture_normal = ExtResource("3_dxoc3")
 [node name="Timer" type="Timer" parent="RiceButton"]
 
 [node name="ServingButton" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2(1111, 469)
 texture_normal = ExtResource("3_dxoc3")
 

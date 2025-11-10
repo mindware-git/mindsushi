@@ -7,7 +7,7 @@ enum CustomerState {
 }
 
 var walk_speed: float = 50.0
-var current_state: CustomerState = CustomerState.WAITING
+var current_state: CustomerState = CustomerState.WALKING_TO_SEAT
 var satisfaction: float = 100.0 # 만족도 (0-100)
 
 func _ready() -> void:
