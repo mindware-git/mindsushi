@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0l7xwga3wlfq"]
 
-[ext_resource type="Texture2D" uid="uid://dt48r46hxrxmn" path="res://assets/plate.tres" id="1_fgrwb"]
+[ext_resource type="Texture2D" uid="uid://non22gdhmrdr" path="res://assets/plate.png" id="1_fgrwb"]
 [ext_resource type="Script" uid="uid://cw8x1rbqslq4x" path="res://src/plate.gd" id="1_ti7cb"]
 
 [node name="Plate" type="TextureRect"]

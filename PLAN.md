@@ -9,3 +9,8 @@ https://github.com/github/spec-kit
 constitution
 
 specify -> plan -> tasks -> implement
+
+## Image size
+Plate 128x128
+Human 96x128
+UI resource 64x64
