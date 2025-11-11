@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxou3xhfwpto4"]
+[gd_scene load_steps=5 format=3 uid="uid://cxou3xhfwpto4"]
 
 [ext_resource type="Script" uid="uid://glq2o71s1exn" path="res://src/cook.gd" id="1_1q6tk"]
 [ext_resource type="Texture2D" uid="uid://b3xnj01jhd42u" path="res://assets/TX Tileset Grass.png" id="1_h0uxg"]
 [ext_resource type="Texture2D" uid="uid://bujsyksklihf7" path="res://icon.svg" id="3_dxoc3"]
+[ext_resource type="Texture2D" uid="uid://dd5kd6bvp20pi" path="res://assets/rice_bottle.png" id="3_pyxvd"]
 
 [node name="Cook" type="Control"]
 layout_mode = 3
@@ -17,7 +18,7 @@ texture = ExtResource("1_h0uxg")
 
 [node name="RiceButton" type="TouchScreenButton" parent="."]
 position = Vector2(22, 473)
-texture_normal = ExtResource("3_dxoc3")
+texture_normal = ExtResource("3_pyxvd")
 
 [node name="Timer" type="Timer" parent="RiceButton"]
 

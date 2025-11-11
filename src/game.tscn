@@ -36,10 +36,10 @@ text = "Go to Chef"
 
 [node name="RestaurantButton" type="Button" parent="CanvasLayer"]
 visible = false
-offset_left = 34.0
-offset_top = 552.0
-offset_right = 171.0
-offset_bottom = 583.0
+offset_left = 1000.0
+offset_top = 550.0
+offset_right = 1137.0
+offset_bottom = 581.0
 text = "Go to restaurant"
 
 [node name="Cook" parent="." instance=ExtResource("3_xq6wo")]
@@ -47,11 +47,6 @@ visible = false
 
 [node name="Restaurant" parent="." instance=ExtResource("3_kc8ui")]
 
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/ChefButton" to="." method="_on_chef_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestaurantButton" to="." method="_on_restaurant_button_pressed"]
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

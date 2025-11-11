@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3uwsgg7kri2v"]
+[gd_scene load_steps=7 format=3 uid="uid://d3uwsgg7kri2v"]
 
 [ext_resource type="Script" uid="uid://budqd786u8v8s" path="res://src/customer.gd" id="1_ac51m"]
 [ext_resource type="Texture2D" uid="uid://bx8o2x26co6gl" path="res://assets/customer.png" id="2_8rmds"]
+[ext_resource type="Texture2D" uid="uid://dt48r46hxrxmn" path="res://assets/plate.tres" id="3_3gjhe"]
 [ext_resource type="Script" uid="uid://cavemb1fkmy8t" path="res://src/take.gd" id="3_8rmds"]
+[ext_resource type="Curve2D" uid="uid://5wrrxl0pjfr2" path="res://assets/walk_path1.tres" id="4_3gjhe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x1um5"]
 animations = [{
@@ -31,16 +33,29 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="WantFood" type="TextureRect" parent="CharacterBody2D/Order"]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -160.0
+offset_right = 48.0
+offset_bottom = -64.0
+texture = ExtResource("3_3gjhe")
+
 [node name="Take" type="Control" parent="CharacterBody2D"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 64.0
 script = ExtResource("3_8rmds")
 
 [node name="Path2D" type="Path2D" parent="."]
+curve = ExtResource("4_3gjhe")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(318, -1)
+rotation = 1.5906942
 loop = false
 
 [node name="WaitTimer" type="Timer" parent="."]
