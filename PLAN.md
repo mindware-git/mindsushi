@@ -14,3 +14,6 @@ specify -> plan -> tasks -> implement
 Plate 128x128
 Human 96x128
 UI resource 64x64
+
+Needs tutorial.
+new tscn with child cook tscn.
