@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cptd0fn0dngjt"]
+[gd_scene load_steps=9 format=3 uid="uid://cptd0fn0dngjt"]
 
 [ext_resource type="Script" uid="uid://cjahnc52sc5hg" path="res://src/game.gd" id="1_7uq6d"]
 [ext_resource type="Texture2D" uid="uid://cibo5lwfto786" path="res://assets/time.png" id="2_kc8ui"]
+[ext_resource type="Texture2D" uid="uid://cqq7xog8fgtdw" path="res://assets/cook.png" id="2_wqvko"]
 [ext_resource type="Texture2D" uid="uid://dcs4nt8oclvmj" path="res://assets/money.png" id="3_bs6l1"]
+[ext_resource type="Texture2D" uid="uid://c8i8eg12lb0iq" path="res://assets/rest.png" id="3_cdx1q"]
 [ext_resource type="PackedScene" uid="uid://pppeoc0tv07w" path="res://src/restaurant.tscn" id="3_kc8ui"]
 [ext_resource type="PackedScene" uid="uid://cxou3xhfwpto4" path="res://src/cook.tscn" id="3_xq6wo"]
 [ext_resource type="Texture2D" uid="uid://bpy0537do3v4m" path="res://assets/star.png" id="4_pk08u"]
@@ -15,20 +17,20 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ChefButton" type="Button" parent="CanvasLayer"]
+[node name="ChefButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 1023.0
 offset_top = 556.0
 offset_right = 1113.0
 offset_bottom = 587.0
-text = "Go to Chef"
+texture_normal = ExtResource("2_wqvko")
 
-[node name="RestaurantButton" type="Button" parent="CanvasLayer"]
+[node name="RestaurantButton" type="TextureButton" parent="CanvasLayer"]
 visible = false
 offset_left = 1000.0
 offset_top = 550.0
 offset_right = 1137.0
 offset_bottom = 581.0
-text = "Go to restaurant"
+texture_normal = ExtResource("3_cdx1q")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 offset_right = 6.0
