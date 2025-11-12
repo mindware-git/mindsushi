@@ -1,8 +1,9 @@
 extends Node2D
 
 var plates = []
-var customers = []
+var occupied_seats = [] # 사용 중인 자리 목록
 const MAX_CUSTOMERS = 4
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +12,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+# 사용 가능한 자리 찾기 함수
+func find_available_seat() -> int:
+	for seat in range(MAX_CUSTOMERS):
+		if seat not in occupied_seats:
+			return seat
+	return -1 # 사용 가능한 자리가 없을 경우
 
 func update_plate() -> void:
 	SaveManager.game_data.num_plate = 2
@@ -45,29 +53,37 @@ func update_plate() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	# 현재 손님 수가 최대 손님 수보다 적을 때만 새 손님 생성
-	if customers.size() < MAX_CUSTOMERS:
+	if occupied_seats.size() < MAX_CUSTOMERS:
+		var available_seat = find_available_seat()
+		if available_seat == -1:
+			print("사용 가능한 자리가 없습니다!")
+			return
+			
 		var customer = load("res://src/customer.tscn").instantiate()
 		
-		# 손님에게 고유한 자리 할당 (의자 위치에 따라 다른 경로 사용)
-		var chair_index = customers.size()
-		match chair_index:
+		# 자리에 따른 경로 설정
+		match available_seat:
 			0:
 				customer.get_node("Path2D").curve = load("res://assets/walk_path1.tres")
 			1:
 				customer.get_node("Path2D").curve = load("res://assets/walk_path2.tres")
+				customer.type = 1
 			2:
 				customer.get_node("Path2D").curve = load("res://assets/walk_path3.tres")
+				customer.type = 2
 			3:
 				customer.get_node("Path2D").curve = load("res://assets/walk_path4.tres")
+
+		# 자리 할당
+		customer.seat = available_seat
+		occupied_seats.append(available_seat)
 		
 		add_child(customer)
-		customers.append(customer)
-		print("새 손님 입장! 현재 손님 수: ", customers.size())
+		print("새 손님 입장! 자리: ", available_seat, " 현재 손님 수: ", occupied_seats.size())
 	else:
-		print("최대 손님 수 도달! 현재 손님 수: ", customers.size())
+		print("최대 손님 수 도달! 현재 손님 수: ", occupied_seats.size())
 
 # 손님이 씬에서 제거될 때 호출되는 함수
 func _on_customer_exiting(customer: Node) -> void:
-	if customer in customers:
-		customers.erase(customer)
-		print("손님이 떠났습니다! 현재 손님 수: ", customers.size())
+	occupied_seats.erase(customer.seat) # 자리 해제
+	print("손님이 떠났습니다! 자리: ", customer.seat, " 현재 손님 수: ", occupied_seats.size())

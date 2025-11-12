@@ -1,11 +1,13 @@
 extends Control
 
 @onready var rice_timer = $RiceButton/Timer
+@onready var rice_progress = $RiceButton/ProgressBar
+
 var sushi_instance: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	rice_progress.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,9 +18,11 @@ func _process(_delta: float) -> void:
 func _on_rice_button_pressed() -> void:
 	print("rice pressed")
 	rice_timer.start()
+	rice_progress.show()
 
 func _on_rice_button_released() -> void:
 	print("rice released")
+	rice_progress.hide()
 	var pressed_time = rice_timer.wait_time - rice_timer.time_left
 	rice_timer.stop()
 	print("pressed time: ", pressed_time)

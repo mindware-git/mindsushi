@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxou3xhfwpto4"]
 
 [ext_resource type="Script" uid="uid://glq2o71s1exn" path="res://src/cook.gd" id="1_1q6tk"]
-[ext_resource type="Texture2D" uid="uid://b3xnj01jhd42u" path="res://assets/TX Tileset Grass.png" id="1_h0uxg"]
-[ext_resource type="Texture2D" uid="uid://bujsyksklihf7" path="res://icon.svg" id="3_dxoc3"]
+[ext_resource type="Texture2D" uid="uid://cfl0lo6hjdmg8" path="res://assets/cook_2.png" id="2_pyxvd"]
 [ext_resource type="Texture2D" uid="uid://dd5kd6bvp20pi" path="res://assets/rice_bottle.png" id="3_pyxvd"]
+[ext_resource type="Texture2D" uid="uid://non22gdhmrdr" path="res://assets/plate.png" id="4_pyxvd"]
 
 [node name="Cook" type="Control"]
 layout_mode = 3
@@ -12,20 +12,28 @@ script = ExtResource("1_1q6tk")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-texture = ExtResource("1_h0uxg")
+offset_top = 208.0
+offset_right = 762.0
+offset_bottom = 717.0
+texture = ExtResource("2_pyxvd")
 
 [node name="RiceButton" type="TouchScreenButton" parent="."]
-position = Vector2(22, 473)
+position = Vector2(-26, 337)
 texture_normal = ExtResource("3_pyxvd")
 
 [node name="Timer" type="Timer" parent="RiceButton"]
 
+[node name="ProgressBar" type="ProgressBar" parent="RiceButton"]
+offset_left = 76.0
+offset_top = 33.0
+offset_right = 174.0
+offset_bottom = 60.0
+value = 2.0
+
 [node name="ServingButton" type="TouchScreenButton" parent="."]
 visible = false
 position = Vector2(1111, 469)
-texture_normal = ExtResource("3_dxoc3")
+texture_normal = ExtResource("4_pyxvd")
 
 [connection signal="pressed" from="RiceButton" to="." method="_on_rice_button_pressed"]
 [connection signal="released" from="RiceButton" to="." method="_on_rice_button_released"]

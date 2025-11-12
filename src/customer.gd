@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var type: int = 0
+@export var seat: int = 0
+
 enum CustomerState {
 	WALKING_TO_SEAT,
 	WAITING,
@@ -17,6 +20,16 @@ var current_state: CustomerState = CustomerState.WALKING_TO_SEAT
 var satisfaction: int = 100 # 만족도 (0-100)
 
 func _ready() -> void:
+	match type:
+		1:
+			$CharacterBody2D/AnimatedSprite2D.animation = "1"
+			walk_speed = 60.0
+
+		2:
+			$CharacterBody2D/AnimatedSprite2D.animation = "2"
+			walk_speed = 70.0
+
+		
 	$CharacterBody2D/AnimatedSprite2D.play()
 	$CharacterBody2D/Order/WantFood.hide()
 
