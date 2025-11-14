@@ -7,6 +7,9 @@ func before_each():
 	SaveManager.game_data = GameData.new()
 
 func test_save_and_load():
+	SaveManager.game_data.money = 150
 	SaveManager.save_game()
+
 	SaveManager.game_data = GameData.new()
 	SaveManager.format_check()
+	assert_eq(SaveManager.game_data.money, 150)
