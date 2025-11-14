@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://glq2o71s1exn" path="res://src/cook.gd" id="1_1q6tk"]
 [ext_resource type="Texture2D" uid="uid://cfl0lo6hjdmg8" path="res://assets/cook_2.png" id="2_pyxvd"]
 [ext_resource type="Texture2D" uid="uid://dd5kd6bvp20pi" path="res://assets/rice_bottle.png" id="3_pyxvd"]
-[ext_resource type="Texture2D" uid="uid://non22gdhmrdr" path="res://assets/plate.png" id="4_pyxvd"]
+[ext_resource type="PackedScene" uid="uid://cp4ft8tcqatfi" path="res://src/plate_station.tscn" id="4_pyxvd"]
 
 [node name="Cook" type="Control"]
 layout_mode = 3
@@ -30,12 +30,8 @@ offset_right = 174.0
 offset_bottom = 60.0
 value = 2.0
 
-[node name="ServingButton" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(1111, 469)
-texture_normal = ExtResource("4_pyxvd")
+[node name="PlateStation" parent="." instance=ExtResource("4_pyxvd")]
 
 [connection signal="pressed" from="RiceButton" to="." method="_on_rice_button_pressed"]
 [connection signal="released" from="RiceButton" to="." method="_on_rice_button_released"]
 [connection signal="timeout" from="RiceButton/Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="ServingButton" to="." method="_on_serving_button_pressed"]

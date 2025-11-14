@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp4ft8tcqatfi"]
+
+[ext_resource type="Script" uid="uid://dj0itmlprjlg0" path="res://src/plate_station.gd" id="1_e5ftw"]
+[ext_resource type="Texture2D" uid="uid://non22gdhmrdr" path="res://assets/plate.png" id="2_r724v"]
+[ext_resource type="PackedScene" uid="uid://cmui057lvks5b" path="res://src/food.tscn" id="3_2o4cf"]
+
+[node name="PlateStation" type="Node2D"]
+script = ExtResource("1_e5ftw")
+
+[node name="Plate" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_r724v")
+
+[node name="Food" parent="Plate" instance=ExtResource("3_2o4cf")]
+layout_mode = 1

@@ -28,19 +28,9 @@ func _on_rice_button_released() -> void:
 	print("pressed time: ", pressed_time)
 	
 	# 스시 씬 생성
-	sushi_instance = load("res://src/sushi.tscn").instantiate()
-	sushi_instance.rice_amount = pressed_time # pressed_time 변수 전달
-	add_child(sushi_instance) # CanvasLayer에 추가
-	sushi_instance.position = Vector2(100, 200) # ChefNode 기준 적절한 위치
-	$ServingButton.show()
+	sushi_instance = load("res://src/food.tscn").instantiate()
+	add_child(sushi_instance)
 
 
 func _on_timer_timeout() -> void:
 	print("Too long hold rice")
-
-
-func _on_serving_button_pressed() -> void:
-	SaveManager.game_data.ready_food.append(sushi_instance.ingredients)
-	print("Ready food: ", SaveManager.game_data.ready_food)
-	sushi_instance.queue_free()
-	$ServingButton.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pppeoc0tv07w"]
+[gd_scene load_steps=10 format=3 uid="uid://pppeoc0tv07w"]
 
 [ext_resource type="Script" uid="uid://bbdg6l1lirqyv" path="res://src/restaurant.gd" id="1_6v0x1"]
 [ext_resource type="Texture2D" uid="uid://b3xnj01jhd42u" path="res://assets/TX Tileset Grass.png" id="3_fk38p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bty4sxhilpf0i" path="res://assets/chair.tres" id="5_6xcvh"]
 [ext_resource type="Texture2D" uid="uid://bujsyksklihf7" path="res://icon.svg" id="6_fvcg6"]
 [ext_resource type="Curve2D" uid="uid://ba4jkoo5k74bf" path="res://assets/walk_path4.tres" id="6_xho1b"]
+[ext_resource type="PackedScene" uid="uid://cp4ft8tcqatfi" path="res://src/plate_station.tscn" id="7_xho1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xcvh"]
 texture = ExtResource("4_uge47")
@@ -174,5 +175,7 @@ offset_top = 260.0
 offset_right = 1136.0
 offset_bottom = 301.0
 texture = ExtResource("5_6xcvh")
+
+[node name="PlateStation" parent="." instance=ExtResource("7_xho1b")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
