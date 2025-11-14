@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cjtsujkgnvktw" path="res://assets/customer2.png" id="2_0bdcs"]
 [ext_resource type="Texture2D" uid="uid://bx8o2x26co6gl" path="res://assets/customer.png" id="2_8rmds"]
 [ext_resource type="Texture2D" uid="uid://bllt5bxqfvusi" path="res://assets/customer3.png" id="3_0oebo"]
-[ext_resource type="Texture2D" uid="uid://dt48r46hxrxmn" path="res://assets/plate.tres" id="3_3gjhe"]
-[ext_resource type="Script" uid="uid://cavemb1fkmy8t" path="res://src/take.gd" id="3_8rmds"]
+[ext_resource type="Script" uid="uid://cavemb1fkmy8t" path="res://src/food_drop.gd" id="3_8rmds"]
 [ext_resource type="Curve2D" uid="uid://5wrrxl0pjfr2" path="res://assets/walk_path1.tres" id="4_3gjhe"]
+[ext_resource type="Texture2D" uid="uid://duj6m43tead1u" path="res://assets/rice.png" id="5_0bdcs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x1um5"]
 animations = [{
@@ -57,9 +57,9 @@ offset_left = -48.0
 offset_top = -160.0
 offset_right = 48.0
 offset_bottom = -64.0
-texture = ExtResource("3_3gjhe")
+texture = ExtResource("5_0bdcs")
 
-[node name="Take" type="Control" parent="CharacterBody2D"]
+[node name="FoodDrop" type="Control" parent="CharacterBody2D"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -48.0
