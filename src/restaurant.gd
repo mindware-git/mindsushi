@@ -7,7 +7,7 @@ const MAX_CUSTOMERS = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	update_plate()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -20,35 +20,33 @@ func find_available_seat() -> int:
 			return seat
 	return -1 # 사용 가능한 자리가 없을 경우
 
-func update_plate() -> void:
-	SaveManager.game_data.num_plate = 2
-	
-	# 기존 플레이트들 제거
-	for plate in plates:
-		plate.queue_free()
-	plates.clear()
-	
-	# 새로운 플레이트들 생성
-	for i in range(SaveManager.game_data.num_plate):
-		var plate = load("res://src/plate.tscn").instantiate()
-		
-		# 위치 설정 (여러 개일 경우 겹치지 않게)
-		var offset = Vector2(i * 128, 0) # 예: x축으로 60픽셀 간격으로 배치
-		plate.position = $Marker2D.position + offset
-		
-		# 씬 트리에 추가
-		add_child(plate)
-		plates.append(plate)
-		
-		if SaveManager.game_data.ready_food.size() > i: # ready_food가 충분한 경우에만 음식 생성
-			var ingredients = SaveManager.game_data.ready_food[i]
-			for entity in ingredients:
-				var sprite = Sprite2D.new()
-				sprite.texture = entity.texture
-				# 텍스처 크기의 절반만큼 밑 오른쪽으로 위치 조정
-				var texture_size = entity.texture.get_size()
-				sprite.position = Vector2(texture_size.x / 2, texture_size.y / 2)
-				plate.add_child(sprite)
+#func update_plate() -> void:
+	## 기존 플레이트들 제거
+	#for plate in plates:
+		#plate.queue_free()
+	#plates.clear()
+	#
+	## 새로운 플레이트들 생성
+	#for i in range(SaveManager.game_data.num_plate):
+		#var plate = load("res://src/plate.tscn").instantiate()
+		#
+		## 위치 설정 (여러 개일 경우 겹치지 않게)
+		#var offset = Vector2(i * 128, 0) # 예: x축으로 60픽셀 간격으로 배치
+		#plate.position = $Marker2D.position + offset
+		#
+		## 씬 트리에 추가
+		#add_child(plate)
+		#plates.append(plate)
+		#
+		#if SaveManager.game_data.ready_food.size() > i: # ready_food가 충분한 경우에만 음식 생성
+			#var ingredients = SaveManager.game_data.ready_food[i]
+			#for entity in ingredients:
+				#var sprite = Sprite2D.new()
+				#sprite.texture = entity.texture
+				## 텍스처 크기의 절반만큼 밑 오른쪽으로 위치 조정
+				#var texture_size = entity.texture.get_size()
+				#sprite.position = Vector2(texture_size.x / 2, texture_size.y / 2)
+				#plate.add_child(sprite)
 
 
 func _on_spawn_timer_timeout() -> void:
